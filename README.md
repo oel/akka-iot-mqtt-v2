@@ -2,7 +2,7 @@
 
 ---
 
-This is a Scala-based application using Akka Actor systems and MQTT Pub-Sub messaging on a scalable fault-tolerant distributed platform to simulate individual IoT (Internet of Things) devices, each maintaining its own internal state and setting.  It's an expanded version (hence v.2) of another [Akka-IoT application](https://github.com/oel/akka-iot-mqtt).
+This is a Scala-based application using Akka Actor systems and MQTT Pub-Sub messaging on a scalable fault-tolerant distributed platform to simulate individual IoT (Internet of Things) devices, each maintaining its own internal state and setting.  It's an expanded version (hence v.2) of another [Akka-IoT application](https://github.com/oel/akka-iot-mqtt).  For an overview of the application, please visit [Genuine Blog](http://blog.genuine.com/2017/07/scala-iot-systems-with-akka-actors-ii/).
 
 ##### To run the application on a single JVM, simply Git-clone the repo to a local disk, open up a command line terminal, run the following command and observe the console output:
 
