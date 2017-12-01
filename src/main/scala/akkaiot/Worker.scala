@@ -29,7 +29,7 @@ class Worker(clusterClient: ActorRef, workProcessorProps: Props, registerInterva
   val registerTask = context.system.scheduler.schedule(0.seconds, registerInterval, clusterClient,
     SendToAll("/user/master/singleton", RegisterWorker(workerId)))
 
-  val workProcessor = context.watch(context.actorOf(WorkProcessor.props(), "work-processor"))
+  val workProcessor = context.watch(context.actorOf(workProcessorProps, "work-processor"))
 
   var currentWorkId: Option[String] = None
   def workId: String = currentWorkId match {
