@@ -30,17 +30,31 @@ object MqttConfig {
   def writeToByteArray(obj: Any): Array[Byte] = {
     val baos = new ByteArrayOutputStream
     val oos = new ObjectOutputStream(baos)
-    oos.writeObject(obj)
-
-    baos.toByteArray
+    try {
+      oos.writeObject(obj)
+      baos.toByteArray
+    } finally {
+      try {
+        oos.close
+      } catch {
+        case _: Throwable => // Do nothing
+      }
+    }
   }
 
   // Deserialize object from byte array
   def readFromByteArray[A](bytes: Array[Byte]): A = {
     val bais = new ByteArrayInputStream(bytes)
     val ois = new ObjectInputStream(bais)
-    val obj = ois.readObject
-
-    obj.asInstanceOf[A]
+    try {
+      val obj = ois.readObject
+      obj.asInstanceOf[A]
+    } finally {
+      try {
+        ois.close
+      } catch {
+        case _: Throwable => // Do nothing
+      }
+    }
   }
 }
