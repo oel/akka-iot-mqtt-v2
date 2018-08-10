@@ -4,17 +4,15 @@
 
 This is a Scala-based application using Akka Actor systems and MQTT Pub-Sub messaging on a scalable fault-tolerant distributed platform to simulate individual IoT (Internet of Things) devices, each maintaining its own internal state and setting.  It's an expanded version (hence v.2) of another [Akka-IoT application](https://github.com/oel/akka-iot-mqtt).  For an overview of the application, please visit [Genuine Blog](http://blog.genuine.com/2017/07/scala-iot-systems-with-akka-actors-ii/).
 
-##### To run the application on a single JVM, simply Git-clone the repo to a local disk, open up a command line terminal, run the following command and observe the console output:
+##### To run the application on a single JVM with the default 20 devices, simply Git-clone the repo to a local disk, open up a command line terminal, run the following command and observe the console output:
 
 > Start a Redis server accessible to the master cluster to serve as the persistence journal:
 >> $ nohup redis-server /path/to/conf &
 
 > Launch the master cluster with 2 seed nodes, IoT actor system and Worker actor system:
->> $ {project-root}/bin/sbt "runMain akkaiot.Main [numOfDevices]"
+>> $ {project-root}/bin/sbt "runMain akkaiot.Main"
 
-The optional numOfDevices parameter, if not provided, defaults to 20.
-
-##### To run the application on separate JVMs, please proceed as follows:
+##### To run the application on separate JVMs with a given number of devices, please proceed as follows:
 
 Git-clone the repo to a local disk, open up separate command line terminals and launch the different components on separate terminals:
 
@@ -35,6 +33,8 @@ Git-clone the repo to a local disk, open up separate command line terminals and 
 >
 > Launch additional Worker node:
 >> $ {project-root}/bin/sbt "runMain akkaiot.Main 0"
+
+The optional numOfDevices parameter, if not provided, defaults to 20.
 
 To scale up work processing service for the IoT devices, start up additional worker (and/or master) nodes.
 
